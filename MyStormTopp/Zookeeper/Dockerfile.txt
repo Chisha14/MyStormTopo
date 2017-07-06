@@ -11,9 +11,7 @@ RUN cp /usr/local/zookeeper/zookeeper-3.4.6/conf/zoo_sample.cfg /usr/local/zooke
 # workaround packaging issue
 RUN sed -i 's,/usr/share/java/log4j.jar,/usr/share/java/log4j-1.jar,' /usr/local/zookeeper/zookeeper-3.4.6/bin/zkEnv.sh
 
-ENV ZOOKEEPER_HOME /usr/local/zookeeper/zookeeper-3.4.6
-
 EXPOSE 2181 2888 3888
 
-ENTRYPOINT ["ZOOKEEPER_HOME/bin/zkServer.sh"]
+ENTRYPOINT ["/usr/local/zookeeper/zookeeper-3.4.6/bin/zkServer.sh"]
 CMD ["start-foreground"]
